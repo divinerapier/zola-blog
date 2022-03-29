@@ -1,0 +1,6 @@
+[submodule "public"]
+	path = public
+	url = git@github.com:divinerapier/divinerapier.github.io.git
+[submodule "themes/even"]
+	path = themes/even
+	url = git@github.com:getzola/even.git
