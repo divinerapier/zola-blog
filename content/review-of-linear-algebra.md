@@ -113,3 +113,137 @@ $$\hat{a}\cdotp\hat{b} = - 1$$
 ## 向量叉乘
 
 ![叉乘](/review-of-linear-algebra/04.png)
+
+向量 \\(\vec{a}\\) 与向量 \\(\vec{b}\\) 的叉乘记作 \\(\vec{a}\times\vec{b}\\)，其结果为一个向量，假设 \\(\vec{a}\\) 与 \\(\vec{b}\\) 之间的夹角为 \\(\theta\\):
+$$\Vert\vec{a}\times\vec{b}\Vert=\Vert\vec{a}\Vert\Vert\vec{b}\Vert\sin\theta$$
+
+* \\(\vec{a}\times\vec{b}\\) 同时垂直于\\(\vec{a}\\)与\\(\vec{b}\\)，即 \\(\vec{a}\times\vec{b}\\) 垂直于 \\(\vec{a}\\) 与 \\(\vec{b}\\) 所在的平面
+* \\(\vec{a}\times\vec{b}\\) 的方向通过右手(螺旋)定则判断
+  * 伸开右手，四指沿着向量 \\(\vec{a}\\) (左操作数)的方向
+  * 四指旋转向 \\(\vec{b}\\) (右操作数)
+  * 拇指对应的方向就是 \\(\vec{a}\times\vec{b}\\) 的方向
+
+因此，可知 \\(\vec{b}\times\vec{a}\\) 的方向与 \\(\vec{a}\times\vec{b}\\) 的大小相同，方向相反:
+
+$$\vec{a}\times\vec{b}=-\vec{b}\times\vec{a}$$
+
+### 叉乘的性质
+
+* \\(\vec{x}\times\vec{y}=+\vec{z}\\)
+* \\(\vec{y}\times\vec{x}=-\vec{z}\\)
+* \\(\vec{y}\times\vec{z}=+\vec{x}\\)
+* \\(\vec{z}\times\vec{y}=-\vec{x}\\)
+* \\(\vec{z}\times\vec{x}=+\vec{y}\\)
+* \\(\vec{x}\times\vec{z}=-\vec{y}\\)
+
+* \\(\vec{a}\times\vec{b}=-\vec{b}\times\vec{a}\\)
+* \\(\vec{a}\times\vec{a}=\vec{0}\\)
+* \\(\vec{a}\times(\vec{b}+\vec{c})=\vec{a}\times\vec{b}+\vec{a}\times\vec{c}\\)
+* \\(\vec{a}\times(k\vec{b}=k(\vec{a}\times\vec{b})\\)
+
+**推论**:
+
+如果在一个坐标系中，有
+
+$$\vec{x}\times\vec{y}=+\vec{z}$$
+
+则表示这个坐标是右手系。
+
+### 代数计算方式
+
+在三维坐标系中，有单位向量 \\(\vec{x}=(1, 0, 0)\\),\\(\vec{y}=(0,1,0)\\),\\(\vec{z}=(0,0,1)\\),设
+$$\vec{a}=(x_a,y_a,z_a)=x_a\vec{x}+y_a\vec{y}+z_a\vec{z}$$
+$$\vec{b}=(x_b,y_b,z_b)=x_b\vec{x}+y_b\vec{y}+z_b\vec{z}$$
+
+则
+
+{% katex(block=true) %}
+\vec{a}\times\vec{b}=(x_a\vec{x}+y_a\vec{y}+z_a\vec{z})\times(x_b\vec{x}+y_b\vec{y}+z_b\vec{z})
+{% end %}
+{% katex(block=true) %}
+
+=x_a\vec{x}\times(x_b\vec{x}+y_b\vec{y}+z_b\vec{z})+y_a\vec{y}\times(x_b\vec{x}+y_b\vec{y}+z_b\vec{z})+z_a\vec{z}\times(x_b\vec{x}+y_b\vec{y}+z_b\vec{z})
+
+{% end %}
+
+{% katex(block=true) %}
+=x_ax_b\vec{x}\times\vec{x}+x_ay_b\vec{x}\times\vec{y}+x_az_b\vec{x}\times\vec{z}
+{% end %}
+{% katex(block=true) %}
++y_ax_b\vec{y}\times\vec{x}+y_ay_b\vec{y}\times\vec{y}+y_az_b\vec{y}\times\vec{z}
+{% end %}
+{% katex(block=true) %}
++z_ax_b\vec{z}\times\vec{x}+z_ay_b\vec{z}\times\vec{y}+z_az_b\vec{z}\times\vec{z}
+{% end %}
+{% katex(block=true) %}
+=\vec{0}+x_ay_b\vec{z}-x_az_b\vec{y}
+{% end %}
+
+{% katex(block=true) %}
+-y_ax_b\vec{z}+\vec{0}+y_az_b\vec{x}
+{% end %}
+{% katex(block=true) %}
++z_ax_b\vec{y}-z_ay_b\vec{x}+\vec{0}
+{% end %}
+{% katex(block=true) %}
+
+=(y_az_b-y_bz_a) \vec{x}+(z_ax_b-x_az_b)\vec{y}+(x_ay_b-y_ax_b)\vec{z}
+{% end %}
+
+{% katex(block=true) %}
+=
+
+\begin{pmatrix} y_az_b - y_bz_a \\
+z_ax_b-x_az_b \\
+x_ay_b-y_ax_b
+ \end{pmatrix}
+{% end %}
+
+{% katex(block=true) %}
+
+=
+
+\begin{pmatrix}
+    0 & -z_a &  y_a \\
+  z_a &    0 & -x_a \\
+  -y_a &  x_a &    0
+  \end{pmatrix}
+  \begin{pmatrix}
+  x_b \\
+  y_b \\
+  z_b
+  \end{pmatrix}
+{% end %}
+
+### 叉乘的应用
+
+#### 判定左右
+
+![叉乘判定左右](/review-of-linear-algebra/05.png)
+
+定义逆时针旋转为左，顺时针旋转为右。
+
+如图，\\(\vec{a}\\) 经过逆时针旋转之后可以与 \\(\vec{b}\\) 的方向相同，此时 \\(\vec{a}\times\vec{b}\\) 方向为正，反之，方向为负。
+
+#### 判定内外
+
+![叉乘判定内外](/review-of-linear-algebra/06.png)
+
+如图，\\(\vec{AB}\times\vec{AP}\\) 可知 \\(P\\) 在 \\(\vec{AP}\\) 的左侧，同理，可知 \\(P\\) 也分别位于 \\(\vec{BC}\\) 和 \\(\vec{CA}\\) 的左侧。因此，\\(P\\) 位于 \\(\triangle ABC\\) 的内部。
+
+推论，当不确定 \\(\triangle ABC\\) 的顶点顺序时，只需要满足 \\(\vec{AB}\times\vec{AP}\\)，\\(\vec{BC}\times\vec{BP}\\)，\\(\vec{CA}\times\vec{CP}\\) 的方向相同，就可证明 \\(P\\) 位于 \\(\triangle ABC\\) 的内部。
+
+## 三维向量的投影
+
+假设在一个三维坐标系中有:
+
+$$\Vert\vec{u}\Vert=\Vert\vec{v}\Vert=\Vert\vec{w}\Vert=1$$
+$$\vec{u}\cdotp\vec{v}=\vec{v}\cdotp\vec{w}=\vec{u}\cdotp\vec{w}=1$$
+$$\vec{w}=\vec{u}\times\vec{v}$$
+
+则有任意向量
+$$\vec{p}=
+ (\vec{p}\cdotp\vec{u})\vec{u}
++(\vec{p}\cdotp\vec{v})\vec{v}
++(\vec{p}\cdotp\vec{w})\vec{w}
+$$
