@@ -247,3 +247,142 @@ $$\vec{p}=
 +(\vec{p}\cdotp\vec{v})\vec{v}
 +(\vec{p}\cdotp\vec{w})\vec{w}
 $$
+
+假设 \\(\vec{p}\\) 与 \\(\vec{u}\\),\\(\vec{v}\\),\\(\vec{w}\\) 的夹角分别是 \\(\alpha\\),\\(\beta\\),\\(\gamma\\),则
+
+$$\vec{p}=
+ \Vert\vec{p}\Vert\cos\alpha\vec{u}
++\Vert\vec{p}\Vert\cos\beta\vec{v}
++\Vert\vec{p}\Vert\cos\gamma\vec{w}
+$$
+
+## 矩阵
+
+一个 \\(m \times n\\)的阵列(\\(m\\) 为行，\\(n\\)为列):
+
+{% katex(block=true) %}
+
+\begin{pmatrix}
+   1 & 3 \\
+   5 & 2 \\
+   0 & 4
+\end{pmatrix}
+{% end %}
+
+### 矩阵的乘法
+
+矩阵 \\(A\\) 乘以矩阵 \\(B\\) 要求，\\(A_{col}=B_{row}\\)，即
+$$(M\times N)(N\times P)=(M\times P)$$
+
+举例:
+
+{% katex(block=true) %}
+\begin{pmatrix}
+   1 & 3 \\
+   5 & 2 \\
+   0 & 4
+\end{pmatrix}
+\begin{pmatrix}
+   3 & 6 & 9 & 4 \\
+   2 & 7 & 8 & 3
+\end{pmatrix}
+=
+
+\begin{pmatrix}
+    9 &  ? & 33 & 13 \\
+   19 & 44 & 61 & 26 \\
+    8 & 28 & 32 &  ?
+\end{pmatrix}
+{% end %}
+
+结果矩阵 \\((i, j)\\) 的值为，\\(A_i\\) 与 \\(B_j\\) 的点乘。
+
+### 矩阵的性质
+
+* 不支持交换律: \\(AB \neq BA\\)
+
+* 支持结合律和分配律
+  * \\((AB)C=A(BC)\\)
+  * \\(A(B+C)=AB+AC\\)
+  * \\((A+B)C=AC+BC\\)
+
+### 矩阵乘以向量
+
+* 将向量视为矩阵 \\((m\times 1)\\)(即列向量)，计算时矩阵在左
+
+### 矩阵的转置(Transpose)
+
+* 将行列互换 \\(ij\to ji\\)
+
+{% katex(block=true) %}
+\begin{pmatrix}
+   1 & 2 \\
+   3 & 4 \\
+   5 & 6
+\end{pmatrix}^T
+=
+
+\begin{pmatrix}
+   1 & 3 & 5 \\
+   2 & 4 & 6
+\end{pmatrix}
+
+{% end %}
+
+* 性质
+$$(AB)^T=B^TA^T$$
+
+### 单位矩阵
+
+{% katex(block=true) %}
+I_{3\times 3}
+=
+
+\begin{pmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{pmatrix}
+{% end %}
+
+$$AA^{-1}=A^{-1}A=I$$
+$$(AB)^{-1}=B^{-1}A^{-1}$$
+
+### 向量乘法的矩阵表示
+
+#### 点乘
+
+{% katex(block=true) %}
+\vec{a}\cdotp\vec{b}=\vec{a}^T\vec{b}
+=(x_a y_a z_a)
+\begin{pmatrix}
+x_b \\
+y_b \\
+z_b
+\end{pmatrix}
+=
+
+(x_ax_b + y_ay_b + z_az_b)
+{% end %}
+
+#### 叉乘
+
+前文已经推导过:
+
+{% katex(block=true) %}
+\vec{a}\times\vec{b}=A^\star\vec{b}
+=
+
+\begin{pmatrix}
+   0 & -z_a &  y_a \\
+ z_a &    0 & -x_a \\
+-y_a &  x_a &    0
+\end{pmatrix}
+\begin{pmatrix}
+x_b \\
+y_b \\
+z_b
+\end{pmatrix}
+{% end %}
+
+其中，\\(A^\star\\) 是　\\(\vec{a}\\) 的 **dual matrix**(对偶矩阵)。
