@@ -17,6 +17,8 @@ taxonomies = [
     {name = "tags", feed = true},
 ]
 
+generate_feed = true
+
 [extra]
 # Put all your custom variables here
 katex_enable = true
